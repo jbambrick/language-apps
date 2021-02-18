@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
+  title: string = "Memory Match";
+
   constructor() { }
 
   ngOnInit(): void {

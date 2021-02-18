@@ -7,6 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  rounds = [
+    {
+      "name": "Round 1",
+      "id":1
+  },
+  {
+    "name": "Round 2",
+    "id":2
+  }
+  ]
+
   constructor() { }
 
   ngOnInit(): void {
