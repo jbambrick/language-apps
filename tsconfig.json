@@ -18,6 +18,12 @@
     },
     {
       "path": "./projects/memory-match/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/dictionary/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/dictionary/tsconfig.spec.json"
     }
 ]
 }

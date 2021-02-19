@@ -1,2 +1,6 @@
-<p>game works!</p>
-{{ title }}
+<div *ngIf="round?.cards">
+    <div *ngFor="let card of round.cards">
+        <app-card></app-card>
+    </div>
+</div>
+{{ message }}
