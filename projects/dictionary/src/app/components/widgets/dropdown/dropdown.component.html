@@ -1,1 +1,8 @@
-<p>dropdown works!</p>
+<div *ngIf="dropdownData?.items">
+    <label for="options">{{ dropdownData.prompt }} </label>
+
+    <select name="options" id="options">
+        <option *ngFor="let item of dropdownData.items">{{ item.display }}</option>
+    </select> 
+</div>
+
