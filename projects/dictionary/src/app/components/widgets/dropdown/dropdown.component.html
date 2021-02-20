@@ -1,7 +1,7 @@
 <div *ngIf="_data?.items">
     <label for="options">{{ _data.prompt }} </label>
 
-    <select name="options" id="options">
+    <select name="options" id="options" [(selectedIndex)]="selectedIndex" (input)="emitSelection()">
         <option *ngFor="let item of _data.items">{{ item.display }}</option>
     </select> 
 </div>

@@ -1,4 +1,5 @@
 <div *ngIf="dropdownData">
-    <app-dropdown [dropdownData]="dropdownData"></app-dropdown>
+    Your favourite food is : {{ this.selectedFood}}
+    <app-dropdown [dropdownData]="dropdownData" (onItemSelection)="handleNewSelection($event)"></app-dropdown>
 </div>
 

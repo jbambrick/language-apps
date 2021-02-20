@@ -9,6 +9,8 @@ import { DropdownData } from '../../widgets/dropdown/dropdown-data';
 })
 export class HomeComponent implements OnInit {
 
+  selectedFood: string = "";
+
   dropdownData: DropdownData<string> = {
     "prompt": "favourite food: ",
     "items": [
@@ -21,6 +23,10 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  handleNewSelection(v: string){
+    this.selectedFood = v;
   }
 
 }

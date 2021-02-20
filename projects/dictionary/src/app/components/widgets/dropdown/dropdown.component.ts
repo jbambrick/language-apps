@@ -15,7 +15,16 @@ export class DropdownComponent<T> implements OnInit {
     this._data = data;
   }
 
+  @Output() public onItemSelection = new EventEmitter<T>();
+  emitSelection(){
+    let valueOfSelectedItem: T = this._data.items[this.selectedIndex].value
+    console.log(`You selected: ${valueOfSelectedItem}`);
+    this.onItemSelection.emit(valueOfSelectedItem);
+  }
+
   _data: DropdownData<T>;
+
+  selectedIndex: number = 0;
 
   constructor() { }
 
