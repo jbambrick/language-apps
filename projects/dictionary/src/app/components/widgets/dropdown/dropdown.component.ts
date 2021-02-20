@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 
 import { DropdownData } from './dropdown-data';
+import { DropdownItem } from './dropdown-item';
 
 @Component({
   selector: 'app-dropdown',
@@ -15,20 +16,30 @@ export class DropdownComponent<T> implements OnInit {
     this._data = data;
   }
 
-  @Output() public onItemSelection = new EventEmitter<T>();
+  @Output() public onItemSelection = new EventEmitter<DropdownItem<T>>();
   emitSelection(){
-    let valueOfSelectedItem: T = this._data.items[this.selectedIndex].value
-    console.log(`You selected: ${valueOfSelectedItem}`);
-    this.onItemSelection.emit(valueOfSelectedItem);
+    let selectedItem: DropdownItem<T> = this._data.items[this.selectedIndex];
+    console.log(`You selected: ${selectedItem.display}`);
+    this.onItemSelection.emit(selectedItem);
   }
 
   _data: DropdownData<T>;
 
-  selectedIndex: number = 0;
+  selectedIndex: number;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  handleInput(data){
+    if(!data?.target?.selectedIndex && !(data?.target.selectedIndex === 0)){
+      console.log(`Selected index not defined on target.`);
+      return;
+    }
+
+    this.selectedIndex = data.target.selectedIndex;
+    this.emitSelection();
   }
 
 }
