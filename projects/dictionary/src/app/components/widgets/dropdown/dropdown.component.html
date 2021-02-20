@@ -1,8 +1,8 @@
-<div *ngIf="dropdownData?.items">
-    <label for="options">{{ dropdownData.prompt }} </label>
+<div *ngIf="_data?.items">
+    <label for="options">{{ _data.prompt }} </label>
 
     <select name="options" id="options">
-        <option *ngFor="let item of dropdownData.items">{{ item.display }}</option>
+        <option *ngFor="let item of _data.items">{{ item.display }}</option>
     </select> 
 </div>
 
