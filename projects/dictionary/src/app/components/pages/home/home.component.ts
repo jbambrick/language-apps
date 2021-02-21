@@ -21,6 +21,14 @@ export class HomeComponent implements OnInit {
     ]
   }
 
+  checkboxData: DropdownData<boolean> = {
+    "prompt": "usitative?",
+    "items": [
+      {"value": true, "display": "usually"},
+      {"value": false, "display": " "}
+    ]
+  }
+
   constructor() { }
 
   ngOnInit(): void {

@@ -3,3 +3,7 @@
     <app-dropdown [dropdownData]="dropdownData" (onItemSelection)="handleNewSelection($event)"></app-dropdown>
 </div>
 
+<div *ngIf="checkboxData">
+    <app-switch (checked)="true" [checkboxData]="checkboxData"></app-switch>
+</div>
+
