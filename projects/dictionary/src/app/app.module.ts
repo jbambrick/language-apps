@@ -12,6 +12,7 @@ import { ListComponent } from './components/pages/list/list.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { DropdownComponent } from './components/widgets/dropdown/dropdown.component';
 import { SwitchComponent } from './components/widgets/switch/switch.component';
+import { ListsComponent } from './components/pages/lists/lists.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SwitchComponent } from './components/widgets/switch/switch.component';
     ListComponent,
     HomeComponent,
     DropdownComponent,
-    SwitchComponent
+    SwitchComponent,
+    ListsComponent
   ],
   imports: [
     BrowserModule,
