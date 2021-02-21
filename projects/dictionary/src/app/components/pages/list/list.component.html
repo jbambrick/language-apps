@@ -3,3 +3,12 @@
     {{ term.id }}
     {{ term.term }}
 </div>
+
+<div *ngIf="vocabularyList">
+    {{ vocabularyList.variables.dropboxes[0]}}
+    <div *ngFor="let dropbox of vocabularyList.variables.dropboxes">
+        <app-dropdown [dropdownData]="dropbox" (onItemSelection)="handleNewSelection($event)"></app-dropdown>
+    </div>
+</div>
+
+
