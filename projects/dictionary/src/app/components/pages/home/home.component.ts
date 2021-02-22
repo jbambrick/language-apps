@@ -10,6 +10,8 @@ import { DropdownItem } from '../../widgets/dropdown/dropdown-item';
 })
 export class HomeComponent implements OnInit {
 
+  initialIndex: number = 1;
+
   selectedFood: string = "";
 
   dropdownData: DropdownData<string> = {

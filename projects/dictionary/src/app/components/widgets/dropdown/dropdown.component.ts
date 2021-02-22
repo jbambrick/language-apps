@@ -16,9 +16,11 @@ export class DropdownComponent<T> implements OnInit {
     this._data = data;
   }
 
+  private initialIndex = 0;
+
   @Output() public onItemSelection = new EventEmitter<DropdownItem<T>>();
-  emitSelection(){
-    let selectedItem: DropdownItem<T> = this._data.items[this.selectedIndex];
+  emitSelection(selectedIndex: number){
+    let selectedItem: DropdownItem<T> = this._data.items[selectedIndex];
     console.log(`You selected: ${selectedItem.display}`);
     this.onItemSelection.emit(selectedItem);
   }
@@ -39,7 +41,7 @@ export class DropdownComponent<T> implements OnInit {
     }
 
     this.selectedIndex = data.target.selectedIndex;
-    this.emitSelection();
+    this.emitSelection(this.selectedIndex);
   }
 
 }

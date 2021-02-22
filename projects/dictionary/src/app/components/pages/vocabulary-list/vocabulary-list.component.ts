@@ -11,7 +11,7 @@ import { DropdownItem } from '../../widgets/dropdown/dropdown-item';
   styleUrls: ['./vocabulary-list.component.css']
 })
 export class VocabularyListComponent implements OnInit {
-
+  selectedTerm: "";
   terms: any;
   vocabularyList: any;
   listID: string;

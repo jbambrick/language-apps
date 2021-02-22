@@ -1,11 +1,12 @@
-<p>list:</p>
-<div *ngFor="let term of terms">
+<div *ngIf="selectedTerm">
     {{ term.id }}
     {{ term.term }}
 </div>
+<div *ngIf="!selectedTerm">
+    No results found. 
+</div>
 
 <div *ngIf="vocabularyList">
-    {{ vocabularyList.variables.dropboxes[0]}}
     <div *ngFor="let dropbox of vocabularyList.variables.dropboxes">
         <app-dropdown [dropdownData]="dropbox" (onItemSelection)="handleNewSelection($event)"></app-dropdown>
     </div>
