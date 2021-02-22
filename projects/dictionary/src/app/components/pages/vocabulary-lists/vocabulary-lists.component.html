@@ -1,1 +1,7 @@
-<p>lists works!</p>
+<div *ngIf="lists">
+    <div *ngFor="let list of lists">
+        <div [routerLink]="['/lists',list.id]">
+            {{ list.text }}
+        </div>
+    </div>
+</div>
