@@ -8,20 +8,20 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListComponent } from './components/pages/list/list.component';
+import { VocabularyListComponent } from './components/pages/vocabulary-list/vocabulary-list.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { DropdownComponent } from './components/widgets/dropdown/dropdown.component';
 import { SwitchComponent } from './components/widgets/switch/switch.component';
-import { ListsComponent } from './components/pages/lists/lists.component';
+import { VocabularyListsComponent } from './components/pages/vocabulary-lists/vocabulary-lists.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
+    VocabularyListComponent,
     HomeComponent,
     DropdownComponent,
     SwitchComponent,
-    ListsComponent
+    VocabularyListsComponent
   ],
   imports: [
     BrowserModule,

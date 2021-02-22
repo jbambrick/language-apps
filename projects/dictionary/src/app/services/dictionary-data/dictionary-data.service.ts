@@ -40,6 +40,11 @@ export class DictionaryDataService {
     )
   }
 
+  getAllVocabularyLists(){
+    let endpoint: string = this.endpoints['vocabularyLists'];
+    return this.http.get(endpoint);
+  }
+
   getVocabularyListByID(id: string){
     let endpoint: string = `${this.endpoints['vocabularyLists']}${id}`;
     return this.http.get(endpoint)

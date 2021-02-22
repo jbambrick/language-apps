@@ -6,11 +6,11 @@ import { DropdownData } from '../../widgets/dropdown/dropdown-data';
 import { DropdownItem } from '../../widgets/dropdown/dropdown-item';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'app-vocabulary-list',
+  templateUrl: './vocabulary-list.component.html',
+  styleUrls: ['./vocabulary-list.component.css']
 })
-export class ListComponent implements OnInit {
+export class VocabularyListComponent implements OnInit {
 
   terms: any;
   vocabularyList: any;
