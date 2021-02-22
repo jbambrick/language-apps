@@ -13,6 +13,7 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { DropdownComponent } from './components/widgets/dropdown/dropdown.component';
 import { SwitchComponent } from './components/widgets/switch/switch.component';
 import { VocabularyListsComponent } from './components/pages/vocabulary-lists/vocabulary-lists.component';
+import { DisplayVocabularyListNamePipe } from './pipes/display-vocabulary-list-name/display-vocabulary-list-name.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { VocabularyListsComponent } from './components/pages/vocabulary-lists/vo
     HomeComponent,
     DropdownComponent,
     SwitchComponent,
-    VocabularyListsComponent
+    VocabularyListsComponent,
+    DisplayVocabularyListNamePipe
   ],
   imports: [
     BrowserModule,

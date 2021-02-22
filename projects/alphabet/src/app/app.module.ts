@@ -10,6 +10,7 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CreditsComponent } from './pages/credits/credits.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DisplayVocabularyListNamePipe } from './pipes/display-vocabulary-list-name.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TileComponent,
     DetailComponent,
     HomeComponent,
-    CreditsComponent
+    CreditsComponent,
+    DisplayVocabularyListNamePipe
   ],
   imports: [
     BrowserModule,

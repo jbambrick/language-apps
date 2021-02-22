@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DictionaryDataService } from '../../../services/dictionary-data/dictionary-data.service';
+import { VocabularyList } from '../../../services/dictionary-data/vocabulary-list';
 
 @Component({
   selector: 'app-vocabulary-lists',
@@ -8,15 +9,13 @@ import { DictionaryDataService } from '../../../services/dictionary-data/diction
 })
 export class VocabularyListsComponent implements OnInit {
 
-  lists = [
-    {"id":1,"text":"to put on shoes"}
-  ]
+  lists: VocabularyList[];
 
   constructor( private data: DictionaryDataService ) { }
 
   ngOnInit(): void {
     this.data.getAllVocabularyLists().subscribe((data:any)=>{
-
+      this.lists = data;
     })
   }
 
