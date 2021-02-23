@@ -1,0 +1,27 @@
+li {
+    text-indent: 0%;
+}
+
+h2 {
+    text-align: center;
+}
+
+.mat-card {
+    margin: auto;
+    margin-bottom: 2px;
+    width: 30%;
+}
+
+#credits {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 1px;
+    overflow-y: auto;
+}
+
+@media only screen and (max-width: 600px) {
+.mat-card {
+      width: 100%;
+    }
+  }

@@ -1,2 +1,29 @@
-<button [routerLink]="['/menu']"> PLAY </button>
-<button [routerLink]="['/credits']"> CREDITS </button>
+<div class="container" id="middle">
+    <div class="container">
+        <mat-card style="background: radial-gradient(5PX CIRCLE, GREY GREY GREEN);">
+            <img src="https://www.tsilhqotin.ca/wp-content/uploads/2020/11/tng_logo_aboutus-1.png" alt="" width="110px">
+            <mat-card-title>{{ title }}</mat-card-title>
+        </mat-card>
+    </div>
+
+    <div class="container" id="buttons">
+        <div>
+            <button mat-raised-button [routerLink]="['/menu']"> PLAY </button>
+        </div>
+        <div>
+            <button mat-raised-button [routerLink]="['/credits']"> CREDITS </button>
+        </div>
+    </div>
+</div>
+
+
+<!--FOOTER-->
+
+<mat-card class="footer">
+    <li>© 2021 Tŝilhqot'in National Government.</li>
+    <section>
+    <mat-icon>
+        <img src="https://www.tsilhqotin.ca/wp-content/uploads/2020/11/tng_logo_aboutus-1.png" alt="" width="25px">
+    </mat-icon>
+    </section>
+</mat-card>

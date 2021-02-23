@@ -1,0 +1,68 @@
+button {
+    width: 120px;
+    height: 65px;
+    margin: 2px;
+    text-align: center;
+    font-size: larger;
+}
+
+.mat-card-title {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    background: rgb(2,0,36);
+    background: url(https://www.tsilhqotin.ca/wp-content/uploads/2021/02/app-background-2-scaled.jpeg);
+}
+
+#button {
+    padding: 0;
+}
+
+.mat-card {
+    display: block;
+    background: linear-gradient(90deg,  rgba(9,9,121,1)0%, rgba(2,0,36,1) 56%, rgb(131, 131, 131) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+#buttons {
+    display: block;
+    padding: 10px;
+}
+
+.footer {
+    color: rgb(0, 0, 126);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+    padding: 0;
+    background: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+#middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.mat-icon {
+    padding: 2px;
+}
