@@ -31,13 +31,14 @@ export class DictionaryDataService {
           let currentTerm: TermWithValues = {
             'term': {
               'id': datum.term.id,
-              'term': datum.term.term
+              'term': datum.term.term,
             },
             'variableValues': datum.variable_values
           };
-          currentTerm['id'] = datum.term.id;
-          currentTerm['term'] = datum.term.term;
-          currentTerm['variableValues'] = datum.variable_values;
+          if(datum.term.audio?.length > 0){
+            currentTerm.term.audioURL = `${this.baseAPIURL}${datum.term.audio[0].url}`;
+            currentTerm.term.audioFormat = datum.term.audio[0].mime;
+          } 
           terms.push(currentTerm);
          }
          return terms;

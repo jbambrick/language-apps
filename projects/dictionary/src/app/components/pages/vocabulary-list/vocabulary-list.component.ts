@@ -100,6 +100,9 @@ export class VocabularyListComponent implements OnInit {
     this.selectedTerm = result;
   }
 
+  playAudio(){
+    console.log(`Now Playing ${this.selectedTerm.term.audioURL}`);
+  }
 
   private setDropboxes(dropboxes){
     if((typeof(dropboxes) === "undefined")) {

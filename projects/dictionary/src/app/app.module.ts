@@ -15,6 +15,7 @@ import { SwitchComponent } from './components/widgets/switch/switch.component';
 import { VocabularyListsComponent } from './components/pages/vocabulary-lists/vocabulary-lists.component';
 import { DisplayVocabularyListNamePipe } from './pipes/display-vocabulary-list-name/display-vocabulary-list-name.pipe';
 import { ListControlComponent } from './components/widgets/list-control/list-control.component';
+import { TermComponent } from './components/widgets/term/term.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ListControlComponent } from './components/widgets/list-control/list-con
     SwitchComponent,
     VocabularyListsComponent,
     DisplayVocabularyListNamePipe,
-    ListControlComponent
+    ListControlComponent,
+    TermComponent
   ],
   imports: [
     BrowserModule,
