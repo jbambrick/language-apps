@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { DictionaryDataService } from '../../../services/dictionary-data/dictionary-data.service';
 import { DropdownData } from '../../widgets/dropdown/dropdown-data';
 import { DropdownItem } from '../../widgets/dropdown/dropdown-item';
+import { VocabularyList } from '../../../services/dictionary-data/vocabulary-list';
+import { ListVariable } from './list-variable';
 
 @Component({
   selector: 'app-vocabulary-list',
@@ -11,13 +13,13 @@ import { DropdownItem } from '../../widgets/dropdown/dropdown-item';
   styleUrls: ['./vocabulary-list.component.css']
 })
 export class VocabularyListComponent implements OnInit {
-  selectedTerm: "";
+  selectedTerm: string = "";
   terms: any;
-  vocabularyList: any;
+  vocabularyList: VocabularyList;
   listID: string;
 
-  dropdowns: DropdownData<string>[];
-  checkboxes: DropdownData<boolean>[];
+  dropboxes: ListVariable<string>[] = [];
+  checkboxes: ListVariable<boolean>[] = [];
 
 
   constructor( private dictionaryData: DictionaryDataService, private route: ActivatedRoute ) { }
@@ -39,12 +41,24 @@ export class VocabularyListComponent implements OnInit {
     this.dictionaryData.getVocabularyListByID("1").subscribe((list: any)=>{
       this.vocabularyList = list;
       console.log(`Here's the first dropbox:`);
-      console.log(list.variables);
+      console.log(list.variables.dropboxes);
+      this.setDropboxes(list.variables.dropboxes);
     })
   }
 
   handleNewSelection(data: any){
     console.log(`Variable options updated.`);
+  }
+
+  private setDropboxes(dropboxes){
+    if((typeof(dropboxes) === "undefined")) {
+      console.log(' NO DROPBOXES FOUND');
+      return;
+    }
+
+    for(let d of dropboxes){
+      this.dropboxes.push(new ListVariable(d,0,d.prompt,"dropbox"));
+    }
   }
 
 }

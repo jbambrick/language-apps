@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { pipe } from 'rxjs';
+import { pipe, Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { HttpClient } from '@angular/common/http';
 import { DropdownData } from '../../components/widgets/dropdown/dropdown-data';
+import { Term } from './term';
+import { TermWithValues } from './term-with-values';
+import { VocabularyList } from './vocabulary-list';
 
 @Injectable({
   providedIn: 'root'
@@ -18,23 +21,25 @@ export class DictionaryDataService {
 
   constructor( private http: HttpClient ) { }
 
-  getTermsForListByListID(id: string){
+  getTermsForListByListID(id: string): Observable<TermWithValues[]>{
     let endpoint: string = `${this.endpoints['listTerms']}${id}`;
     return this.http.get(endpoint)
     .pipe(
       map((data:any)=>{
-        let terms = [];
+        let terms: TermWithValues[] =[];
          for(let datum of data){
-          let currentTerm = {};
+          let currentTerm: TermWithValues = {
+            'term': {
+              'id': datum.term.id,
+              'term': datum.term.term
+            },
+            'variableValues': datum.variable_values
+          };
           currentTerm['id'] = datum.term.id;
           currentTerm['term'] = datum.term.term;
           currentTerm['variableValues'] = datum.variable_values;
           terms.push(currentTerm);
-          console.log('term id')
-          console.log(datum.term.id);
          }
-         console.log(`Returning terms: ${terms}`);
-         console.log(`terms[o].id: ${terms[0].id}`);
          return terms;
       })
     )
@@ -45,7 +50,7 @@ export class DictionaryDataService {
     return this.http.get(endpoint);
   }
 
-  getVocabularyListByID(id: string){
+  getVocabularyListByID(id: string): Observable<VocabularyList>{
     let endpoint: string = `${this.endpoints['vocabularyLists']}${id}`;
     return this.http.get(endpoint)
     .pipe(
@@ -54,6 +59,7 @@ export class DictionaryDataService {
         if(!variables) throw new Error(`failed to parse variables`);
         return {
           "name": data['name'],
+          "name_english": data['name_english'],
           "id": data['id'],
           "variables": variables,
           "credits": data['credits'],
@@ -73,9 +79,11 @@ export class DictionaryDataService {
     for(let variable of apiVariables){
       if(!variable.type) throw new Error(`Encountered variable of unknown type.`);
       console.log(`Processing variable ${variable.name}`);
+      console.log(`and items of length ${variable.validValues.length}`)
       if(variable.type === 'dropbox'){
         let dropbox = this.parseDropbox(variable);
         if(!dropbox) throw new Error(`Failed to parse dropbox.`);
+        console.log(`Pushing dropbox ${dropbox.prompt} to parsedVariables`);
         parsedVariables.dropboxes.push(dropbox);
       } 
       if(variable.type === 'checkbox') parsedVariables.checkboxes.push(this.parseCheckbox(variable));
@@ -84,7 +92,7 @@ export class DictionaryDataService {
   }
 
   private parseCheckbox(variable){
-    if(!variable.items) throw new Error(`Unable to parse checkbox: items undefined.`)
+    if(!variable.items) throw new Error(`Unable to parse checkbox: items undefined.`);
     let newItems = [];
     for(let item of variable.items){
       newItems.push(this.parseCheckbox(item));
@@ -97,9 +105,14 @@ export class DictionaryDataService {
   }
 
   private parseDropbox(variable){
+    if(!variable.validValues) throw new Error(`Unable to parse dropbox: items undefined.`);
     let output: DropdownData<string> = {
       "prompt": variable.name,
       "items": variable.validValues
+    }
+    console.log(`Parsed dropbox of length ${output.items.length}`);
+    for(let v of output.items){
+      console.log(v.value);
     }
     return output;
   }

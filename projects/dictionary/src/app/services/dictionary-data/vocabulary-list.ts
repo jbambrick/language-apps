@@ -6,7 +6,10 @@ export type VocabularyList = {
     "name_english": string,
     "credits": object,
     "comments": string,
-    "variables": Variable<any>[]
+    "variables": {
+        "dropboxes": Variable<any>[],
+        "checkboxes": Variable<any>[]
+    }
 }
 
 
