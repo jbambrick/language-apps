@@ -1,7 +1,5 @@
-<div *ngIf="dropdownData">
-    Your favourite food is : {{ this.selectedFood}}
-    <app-dropdown [dropdownData]="dropdownData" (onItemSelection)="handleNewSelection($event)"></app-dropdown>
-</div>
+<button [routerLink]="['terms']">Terms</button>
+<button [routerLink]="['lists']">Paradigms and Vocabulary Lists</button>
 
 <div *ngIf="checkboxData">
     <app-switch (checked)="true" [checkboxData]="checkboxData"></app-switch>

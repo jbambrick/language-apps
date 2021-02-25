@@ -14,9 +14,10 @@ export class DictionaryDataService {
 
   private baseAPIURL: string = "https://api.tsilhqotinlanguage.ca";
 
-  private endpoints: Object = {
+  private endpoints: object = {
     "listTerms": `${this.baseAPIURL}/list-terms/?vocabulary_list=`,
-    "vocabularyLists": `${this.baseAPIURL}/vocabulary-lists/`
+    "vocabularyLists": `${this.baseAPIURL}/vocabulary-lists/`,
+    "terms": `${this.baseAPIURL}/terms/`
   }
 
   constructor( private http: HttpClient ) { }
@@ -68,6 +69,31 @@ export class DictionaryDataService {
         }
       })
     )
+  }
+
+  getAllTerms(): Observable<Term[]>{
+    let endpoint: string = this.endpoints['terms'];
+    return this.http.get(endpoint)
+    .pipe(
+      map((data:any)=>{
+        let adaptedTerms: Term[] = [];
+        for(let datum of data){
+          let adaptedTerm = this.termAdapter(datum);
+          adaptedTerms.push(adaptedTerm);
+        }
+        return adaptedTerms;
+      })
+    );
+  }
+
+    getTermByID(id:string): Observable<Term>{
+    let endpoint: string =`${this.endpoints['terms']}${id}`; 
+    return this.http.get(endpoint)
+    .pipe(
+      map(data=>{
+        return this.termAdapter(data);
+      })
+    );
   }
 
   private parseVocabularyListForVariables(vocabularyList){
@@ -125,5 +151,28 @@ export class DictionaryDataService {
         "display": i.display
       }
     })
+  }
+
+  private termAdapter(apiTerm){
+    let adaptedTerm;
+    adaptedTerm = {
+      'id': this.throwErrorIfUndefined(apiTerm.id),
+      'term': this.returnValueOrNullIfUndefined(apiTerm.term),
+      'termEnglish': this.returnValueOrNullIfUndefined(apiTerm.term_english),
+      'audioURL': this.returnValueOrNullIfUndefined(apiTerm.audio[0]?.url),
+      'audioFormat': this.returnValueOrNullIfUndefined(apiTerm.audio[0]?.format),
+      'contributor': this.returnValueOrNullIfUndefined(`${apiTerm.contributor?.first_name} ${apiTerm.contributor?.last_name}`)
+    }
+    return adaptedTerm;
+  }
+
+  private returnValueOrNullIfUndefined(value: any): any{
+    if(typeof(value) === 'undefined') return null;
+    return value;
+  }
+
+  private throwErrorIfUndefined(value: any): any{
+    if(typeof(value) === 'undefined') throw new Error(`Value is undefined.`);
+    return value;
   }
 }

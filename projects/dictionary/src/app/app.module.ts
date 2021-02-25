@@ -16,6 +16,9 @@ import { VocabularyListsComponent } from './components/pages/vocabulary-lists/vo
 import { DisplayVocabularyListNamePipe } from './pipes/display-vocabulary-list-name/display-vocabulary-list-name.pipe';
 import { ListControlComponent } from './components/widgets/list-control/list-control.component';
 import { TermComponent } from './components/widgets/term/term.component';
+import { CopyrightPipe } from './pipes/copyright/copyright.pipe';
+import { TermsComponent } from './components/pages/terms/terms.component';
+import { TermDetailComponent } from './components/pages/term-detail/term-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { TermComponent } from './components/widgets/term/term.component';
     VocabularyListsComponent,
     DisplayVocabularyListNamePipe,
     ListControlComponent,
-    TermComponent
+    TermComponent,
+    CopyrightPipe,
+    TermsComponent,
+    TermDetailComponent
   ],
   imports: [
     BrowserModule,
