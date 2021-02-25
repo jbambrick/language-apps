@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { DictionaryDataService } from '../../../services/dictionary-data/dictionary-data.service';
 import { DictionarySearchService } from '../../../services/dictionary-search/dictionary-search.service';
-import { DropdownData } from '../../widgets/dropdown/dropdown-data';
 import { DropdownItem } from '../../widgets/dropdown/dropdown-item';
 import { VocabularyList } from '../../../services/dictionary-data/vocabulary-list';
 import { ListVariable } from './list-variable';
 import { ListQuery } from '../../../services/dictionary-search/list-query';
 import { Parameter } from '../../../services/dictionary-search/parameter';
 import { TermWithValues } from '../../../services/dictionary-data/term-with-values';
-import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-vocabulary-list',
@@ -30,12 +27,7 @@ export class VocabularyListComponent implements OnInit {
   constructor( private dictionaryData: DictionaryDataService, private dictionarySearch: DictionarySearchService, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.route.params
-    .pipe(map(params=>params['id']))
-    .subscribe((id:string)=>{
-      this.listID = id;
-    });
-
+  
     this.dictionaryData.getTermsForListByListID("1").subscribe((terms: any)=>{
       this.terms = terms;
       for(let term of terms){
