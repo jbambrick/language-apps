@@ -1,4 +1,4 @@
 
-<div *ngIf="image">
+<div *ngIf="image && _card && _elementID" (click)="emitCardAndElementIDs()">
     {{ image }}
 </div>
