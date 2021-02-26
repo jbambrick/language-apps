@@ -1,6 +1,6 @@
 <div *ngIf="cardsWithState && cardbackImageURL">
     <div *ngFor="let cardWithState of cardsWithState; let i = index">
         # {{ cardWithState.card.id }} state: {{ cardWithState.state }}
-        <app-card [card]="cardWithState.card" [cardBackURL]="cardbackImageURL" (cardClicked)="handleCardClick($event)" [elementID]="i" [(state)]="cardWithState.state"></app-card>
+        <app-card [card]="cardWithState.card" [cardBackURL]="cardbackImageURL" (cardClicked)="handleCardClick($event)" [elementID]="i" [(state)]="cardWithState.state" [style.visibility]="isVisible(cardWithState)? 'visible' : 'hidden'"></app-card>
     </div>
 </div>

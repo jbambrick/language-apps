@@ -34,17 +34,17 @@ export class GameComponent implements OnInit {
       this.cardsWithState = round.cards.map((c:MemoryCard)=>{
         return new CardWithState(c, CardState.FaceDown);
       });
-      console.log(`Double cardsWithState of length ${this.cardsWithState.length}`);
-      this.cardsWithState = this.doubleArray(this.cardsWithState);
-      console.log(`new length of cardsWithState: ${this.cardsWithState.length}`);
-      this.cardsWithState = this.shuffleArray(this.cardsWithState);
     });
   }
 
   handleCardClick(ids: CardID ){
     let elementID: string = ids['elementID'];
     let cardID: string = ids['cardID'];
-    console.log(`You clicked element ${elementID} of card type ${cardID}`);
+    if(this.cardsWithState[elementID].state === CardState.FaceUp){
+      console.log(`Deactivating card ${elementID}`);
+      return; // ignore repeated clicks
+    } 
+    this.updateCardState(elementID,CardState.Inactive);
     this.addCardSelection(ids);
   }
 
@@ -88,20 +88,8 @@ export class GameComponent implements OnInit {
     this.updateCardState(e2,CardState.FaceDown);
   }
 
-  private doubleArray<T>(a: T[]){
-    if(a.length === 0) return a;
-    return a.concat(a);
+  isVisible(cardWithState: CardWithState){
+    if(cardWithState.state === CardState.Hidden) return false;
+    return true;
   }
-
-  private shuffleArray<T>(a: T[]){
-    // returns shuffled copy of an array
-    if(a.length === 0) return a;
-    // implement Fisher-Yates
-    for(let i = a.length - 1; i > 0; i--){
-      let j = Math.floor(Math.random()*i+1);
-      [a[i],a[j]] = [a[j],a[i]];
-    }
-    return a;
-  }
-
 }

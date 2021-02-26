@@ -34,7 +34,10 @@ export class MemoryMatchService {
     return this.http.get(endpoint)
     .pipe(
       map((data:any)=>{
-        return this.roundAdapter(data);
+        let round: MemoryRound = this.roundAdapter(data);
+        round.cards = this.doubleArray(round.cards);
+        round.cards = this.shuffleArray(round.cards)
+        return round;
       })
     )
   }
@@ -100,5 +103,21 @@ export class MemoryMatchService {
     return {
       'url': this.throwErrorIfUndefinedOrNull(apiMediaItem.url)
     }
+  }
+
+  private doubleArray<T>(a: T[]){
+    if(a.length === 0) return a;
+    return a.concat(a);
+  }
+
+  private shuffleArray<T>(a: T[]){
+    // returns shuffled copy of an array
+    if(a.length === 0) return a;
+    // implement Fisher-Yates
+    for(let i = a.length - 1; i >= 0; i--){
+      let j = Math.floor(Math.random()*i+1);
+      [a[i],a[j]] = [a[j],a[i]];
+    }
+    return a;
   }
 }
