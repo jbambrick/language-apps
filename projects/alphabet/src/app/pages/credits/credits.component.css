@@ -9,19 +9,19 @@ h2 {
 .mat-card {
     margin: auto;
     margin-bottom: 2px;
-    width: 30%;
+    background: inherit;
+    color: white;
 }
 
 #credits {
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    display: block;
     margin-top: 1px;
     overflow-y: auto;
+    background: linear-gradient(217deg, rgb(255, 0, 0), rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, rgba(185, 185, 185, 0.842), rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, rgb(0, 0, 255), rgba(0,0,255,0) 70.71%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
-
-@media only screen and (max-width: 600px) {
-.mat-card {
-      width: 100%;
-    }
-  }
