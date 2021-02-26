@@ -8,7 +8,6 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { MenuComponent } from './components/pages/menu/menu.component';
 import { GameComponent } from './components/pages/game/game.component';
 import { RoundDisplayPipe } from './pipes/round-display/round-display.pipe';
-import { CardComponent } from './widgets/card/card.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { CardComponent } from './widgets/card/card.component';
     HomeComponent,
     MenuComponent,
     GameComponent,
-    RoundDisplayPipe,
-    CardComponent
+    RoundDisplayPipe
   ],
   imports: [
     BrowserModule,
