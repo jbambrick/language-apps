@@ -1,6 +1,5 @@
 export enum CardState {
-    FaceUp,
-    FaceDown,
-    Hidden,
-    Inactive
+    FaceUp ="FaceUP",
+    FaceDown ="FaceDown",
+    Hidden = "Hidden"
   }

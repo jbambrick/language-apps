@@ -1,11 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
-import { CardState } from './card-state';
 import { CardID } from './card-id';
-
-let testCardBack: string = "diamonds.png";
-let testCardFront: string = "dog.png";
-let testCardBlank: string = " HIDDEN  ";
+import { MemoryCard } from '../../../types/types/memory-card';
 
 @Component({
   selector: 'app-card',
@@ -14,63 +9,41 @@ let testCardBlank: string = " HIDDEN  ";
 })
 export class CardComponent implements OnInit {
 
-  public image: string = "";
-  public visible: boolean = true;
-  public active: boolean = true;
+  _card: MemoryCard;
+  _cardBackURL: string;
+  _elementID: string;
+  _image: string;
 
-  // _cardID is shared among 2 matching card elements
-  private _cardID: string;
-  @Input() set cardID(value: string){
-    this._cardID = value;
-    this.image = this._cardID;
-  };
+  constructor() { }
 
-  // _uniqueElementID is unique among all card elements
-  private _uniqueElementID: string;
-  @Input() set uniqueElementID(value: string){
-    this._uniqueElementID = value;
+  @Input() public set card(value: MemoryCard){
+    if(!value) throw new Error(`Cannot set card property to undefined`);
+    if(!value.id) throw new Error(`Card must have an id property`);
+    this._card = value;
   }
 
-  private _state: CardState = CardState.FaceDown;
-  @Input() set state(value: CardState){
-    this._state = value;
-    this.handleStateChange(this._state);
+  @Input() public set elementID(value: string){
+    if(value.length < 1) throw new Error(`Identifier must be non-empty string.`)
+    this._elementID = value;
+  }
+
+  @Input() public set cardBackURL(value: string){
+    this._cardBackURL = value;
+  }
+
+  @Input() public set image(value: string){
+    this._image = value;
   }
 
   @Output() public cardClicked = new EventEmitter<CardID>();
-  public sendIDsOnClick() {
-    if(!this.active) return;
-      this.cardClicked.emit({
-        cardID: this._cardID,
-        uniqueElementID: this._uniqueElementID});
-      // console.log(`You clicked on tile: ${this._cardID}`);
+  emitCardAndElementIDs(){
+    if(!this._card?.id) throw new Error(`Card ID is undefined.`);
+    if(!this._elementID && !(this._elementID == "0")) throw new Error(`Element ID is undefined`);
+    let ids: CardID = new CardID(this._card.id,this._elementID);
+    this.cardClicked.emit(ids);
   }
-
-  constructor() { 
-   }
 
   ngOnInit(): void {
-    this.handleStateChange(CardState.FaceDown);
-  }
-
-  handleStateChange(s: CardState){
-    if(s===CardState.Hidden){
-      console.log(`updating state to hidden, state:${s}`);
-      this.active = false;
-      this.image=testCardBlank;
-      console.log(`Current image: ${this.image}`);
-      return
-    } 
-
-    if(s===CardState.FaceUp){
-      this.image=testCardFront;
-      this.active = false;
-    } 
-    
-    if(s===CardState.FaceDown){
-      this.image=testCardBack;
-      this.active = true;
-    } 
   }
 
 }

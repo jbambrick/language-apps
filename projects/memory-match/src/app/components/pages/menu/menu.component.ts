@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MemoryMatchService } from '../../../services/memory-match.service';
+import { MemoryRound } from '../../../types/types/memory-round';
 
 @Component({
   selector: 'app-menu',
@@ -7,20 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  rounds = [
-    {
-      "name": "Round 1",
-      "id":1
-  },
-  {
-    "name": "Round 2",
-    "id":2
-  }
-  ]
+  rounds: MemoryRound[];
 
-  constructor() { }
+  constructor( private memoryMatchService: MemoryMatchService ) { }
 
   ngOnInit(): void {
+    this.memoryMatchService.getAllRounds().subscribe((data: MemoryRound[])=>{
+      console.log(data)
+      this.rounds = data;
+    })
   }
 
 }

@@ -1,6 +1,18 @@
+<<<<<<< HEAD
 <div *ngIf="round?.cards">
     <div *ngFor="let card of round.cards">
         <app-card></app-card>
     </div>
 </div>
 {{ message }}
+=======
+<div *ngIf="cardsWithState && cardbackImageURL && !winMessage">
+    <div *ngFor="let cardWithState of cardsWithState; let i = index">
+        <app-card [card]="cardWithState.card" [image]="cardWithState.currentImageURL" (cardClicked)="handleCardClick($event)" [elementID]="i" [(state)]="cardWithState.state" [style.visibility]="isVisible(cardWithState)? 'visible' : 'hidden'"></app-card>
+    </div>
+</div>
+
+<div *ngIf="winMessage">
+    {{ winMessage }}
+</div>
+>>>>>>> memory-match
