@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { MemoryMatchService } from '../../../services/memory-match/memory-match.service';
-import { MemoryRound } from '../../../services/memory-match/memory-round';
-=======
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { of, Observable } from 'rxjs';
 import { switchMap, delay } from 'rxjs/operators';
@@ -12,7 +8,6 @@ import { MemoryMatchService } from '../../../services/memory-match.service';
 import { MemoryCard } from '../../../types/types/memory-card';
 import { MemoryRound } from '../../../types/types/memory-round';
 import { CardState } from '../../widgets/card/card-state';
->>>>>>> memory-match
 
 @Component({
   selector: 'app-game',
@@ -21,19 +16,6 @@ import { CardState } from '../../widgets/card/card-state';
 })
 export class GameComponent implements OnInit {
 
-<<<<<<< HEAD
-  title: string = "Memory Match";
-  message = "";
-
-  round: MemoryRound;
-
-  constructor( private memoryMatchService: MemoryMatchService ) { }
-
-  ngOnInit(): void {
-    this.memoryMatchService.getRoundByID("1").subscribe((round: MemoryRound)=>{
-      this.round = round;
-    })
-=======
   cardbackImageURL: string;
   cardsWithState: CardWithState[];
 
@@ -94,7 +76,6 @@ export class GameComponent implements OnInit {
     } catch(error){
       this.errorMessage = error;
     }
->>>>>>> memory-match
   }
 
   private checkForMatch(){
