@@ -12,7 +12,7 @@ export class CardComponent implements OnInit {
   _card: MemoryCard;
   _cardBackURL: string;
   _elementID: string;
-  image: string;
+  _image: string;
 
   constructor() { }
 
@@ -29,7 +29,10 @@ export class CardComponent implements OnInit {
 
   @Input() public set cardBackURL(value: string){
     this._cardBackURL = value;
-    this.image =this._cardBackURL;
+  }
+
+  @Input() public set image(value: string){
+    this._image = value;
   }
 
   @Output() public cardClicked = new EventEmitter<CardID>();

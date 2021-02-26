@@ -101,7 +101,7 @@ export class MemoryMatchService {
 
   private mediaAdapter(apiMediaItem){
     return {
-      'url': this.throwErrorIfUndefinedOrNull(apiMediaItem.url)
+      'url': `${this.baseAPIURL}${this.throwErrorIfUndefinedOrNull(apiMediaItem.url)}`
     }
   }
 

@@ -1,3 +1,4 @@
+import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 import { CardState } from '../../components/widgets/card/card-state';
 import { MemoryCard } from '../types/memory-card';
 export class CardWithState{
@@ -17,8 +18,32 @@ export class CardWithState{
         this._state = newState;
     }
 
-    constructor(card: MemoryCard, initialState: CardState){
+    private _active: boolean;
+    
+    get active(): boolean{
+        return this._active;
+    }
+
+    set active(a: boolean){
+        if(a) console.log(`Setting card as active`);
+        if(!a) console.log(` setting card as inactive`)
+        this._active = a;
+    }
+
+    private _currentImageURL: string;
+
+    get currentImageURL(): string{
+        return this._currentImageURL;
+    }
+
+    set currentImageURL(u: string){
+        this._currentImageURL = u;
+    }
+
+    constructor(card: MemoryCard, initialState: CardState, initialImageURL: string, active: boolean){
         this._card = card;
         this._state = initialState;
+        this._currentImageURL = initialImageURL;
+        this._active = active;
     }
 }
