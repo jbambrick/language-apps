@@ -26,8 +26,4 @@ export class GameComponent implements OnInit {
     });
   }
 
-  handleCardClick(cardID: string){
-    console.log(` handling click`);
-  }
-
 }

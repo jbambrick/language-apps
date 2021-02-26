@@ -1,5 +1,7 @@
 <div *ngIf="round?.cards">
     <div *ngFor="let card of round.cards">
-        <app-card (card)="card" (cardBackURL)="round.cardBackURL" (cardClicked)="handleCardClick($event)"></app-card>
+        {{ card.cardFrontURL }}
+        {{ round.cardbackImageURL }}
+        {{ card.audioURL }}
     </div>
 </div>
