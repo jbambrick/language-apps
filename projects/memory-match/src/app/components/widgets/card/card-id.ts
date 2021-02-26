@@ -8,7 +8,8 @@ export class CardID {
     }
 
     private validateStringIdentifier(s: string){
-        if(!s) throw new Error(`Identifier must be non-empty string.`);
+        console.log(`Validating ${s}`);
+        if(!s && !(s == "0")) throw new Error(`Identifier must be non-empty string.`);
         return s;
     }
 

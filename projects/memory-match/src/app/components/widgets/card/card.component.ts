@@ -35,7 +35,7 @@ export class CardComponent implements OnInit {
   @Output() public cardClicked = new EventEmitter<CardID>();
   emitCardAndElementIDs(){
     if(!this._card?.id) throw new Error(`Card ID is undefined.`);
-    if(!this._elementID) throw new Error(`Element ID is undefined`);
+    if(!this._elementID && !(this._elementID == "0")) throw new Error(`Element ID is undefined`);
     let ids: CardID = new CardID(this._card.id,this._elementID);
     this.cardClicked.emit(ids);
   }
