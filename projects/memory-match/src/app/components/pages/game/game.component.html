@@ -1,8 +1,5 @@
 <div *ngIf="cardsWithState && cardbackImageURL && !winMessage">
     <div *ngFor="let cardWithState of cardsWithState; let i = index">
-        # {{ cardWithState.card.id }} state: {{ cardWithState.state }}
-        {{ currentImageURL }}
-        active {{ cardWithState.active }}
         <app-card [card]="cardWithState.card" [image]="cardWithState.currentImageURL" (cardClicked)="handleCardClick($event)" [elementID]="i" [(state)]="cardWithState.state" [style.visibility]="isVisible(cardWithState)? 'visible' : 'hidden'"></app-card>
     </div>
 </div>
