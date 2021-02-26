@@ -1,11 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { CardState } from './card-state';
-import { CardID } from './card-id';
+import { MemoryCard } from '../../../types/types/memory-card';
 
-let testCardBack: string = "diamonds.png";
-let testCardFront: string = "dog.png";
-let testCardBlank: string = " HIDDEN  ";
+
 
 @Component({
   selector: 'app-card',
@@ -14,21 +12,22 @@ let testCardBlank: string = " HIDDEN  ";
 })
 export class CardComponent implements OnInit {
 
+  _audioURL: string;
+
   public image: string = "";
   public visible: boolean = true;
   public active: boolean = true;
 
   // _cardID is shared among 2 matching card elements
-  private _cardID: string;
-  @Input() set cardID(value: string){
-    this._cardID = value;
-    this.image = this._cardID;
+  private _cardBackURL: string;
+  @Input() set cardBackURL(value: string){
+    this._cardBackURL = value;
+    this.image = this._cardBackURL;
   };
 
-  // _uniqueElementID is unique among all card elements
-  private _uniqueElementID: string;
-  @Input() set uniqueElementID(value: string){
-    this._uniqueElementID = value;
+  _card: MemoryCard;
+  @Input() set card(value: MemoryCard){
+    this._card = value;
   }
 
   private _state: CardState = CardState.FaceDown;
@@ -37,13 +36,11 @@ export class CardComponent implements OnInit {
     this.handleStateChange(this._state);
   }
 
-  @Output() public cardClicked = new EventEmitter<CardID>();
-  public sendIDsOnClick() {
-    if(!this.active) return;
-      this.cardClicked.emit({
-        cardID: this._cardID,
-        uniqueElementID: this._uniqueElementID});
-      // console.log(`You clicked on tile: ${this._cardID}`);
+  @Output() public cardClicked = new EventEmitter<string>();
+  public sendIDOnClick() {
+    console.log(`The card has been clicked- widget`);
+    // if(!this.active) return;
+      this.cardClicked.emit(this._card.id);
   }
 
   constructor() { 
@@ -57,18 +54,18 @@ export class CardComponent implements OnInit {
     if(s===CardState.Hidden){
       console.log(`updating state to hidden, state:${s}`);
       this.active = false;
-      this.image=testCardBlank;
+      this.image=this._cardBackURL;
       console.log(`Current image: ${this.image}`);
       return
     } 
 
     if(s===CardState.FaceUp){
-      this.image=testCardFront;
+      this.image=this._card.cardFrontURL;
       this.active = false;
     } 
     
     if(s===CardState.FaceDown){
-      this.image=testCardBack;
+      this.image=this._cardBackURL;
       this.active = true;
     } 
   }
