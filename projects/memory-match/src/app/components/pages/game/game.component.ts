@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { of, Observable } from 'rxjs';
 import { switchMap, delay } from 'rxjs/operators';
 import { CardID } from '../../widgets/card/card-id';
@@ -28,7 +28,7 @@ export class GameComponent implements OnInit {
 
   winMessage: string;
 
-  constructor( private memoryMatchService: MemoryMatchService, private route: ActivatedRoute ) { }
+  constructor( private memoryMatchService: MemoryMatchService, private route: ActivatedRoute, private router: Router ) { }
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
@@ -117,5 +117,12 @@ export class GameComponent implements OnInit {
 
   handleWin(){
     this.winMessage = "You Won!";
+    this.navigateWithDelay('/menu',this.delayTime);
+  }
+
+  navigateWithDelay(path: string, delayTime: number){
+    return of(path).pipe(delay(delayTime)).subscribe((p: string)=>{
+      this.router.navigateByUrl(path);
+    })
   }
 }
