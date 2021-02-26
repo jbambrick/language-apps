@@ -1,2 +1,7 @@
-<p>game works!</p>
-{{ title }}
+<div *ngIf="round?.cards">
+    <div *ngFor="let card of round.cards">
+        {{ card.cardFrontURL }}
+        {{ round.cardbackImageURL }}
+        {{ card.audioURL }}
+    </div>
+</div>

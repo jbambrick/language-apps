@@ -3,5 +3,6 @@ export interface MemoryCard{
     'name'?: string,
     'contributor'?: string,
     'credits'?: object,
-    'cardFrontURL': string
+    'cardFrontURL': string,
+    'audioURL': string
 }

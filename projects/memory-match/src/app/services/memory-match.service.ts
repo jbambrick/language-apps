@@ -29,6 +29,16 @@ export class MemoryMatchService {
     )
   }
 
+  getRoundByID(id: string): Observable<MemoryRound>{
+    let endpoint: string = `${this.endpoints['rounds']}${id}`;
+    return this.http.get(endpoint)
+    .pipe(
+      map((data:any)=>{
+        return this.roundAdapter(data);
+      })
+    )
+  }
+
   private roundAdapter(apiRound: any): MemoryRound{
     let id: string = this.throwErrorIfUndefinedOrNull(apiRound.id)
     let name: string = this.returnValueOrNull(apiRound.name)
@@ -51,12 +61,18 @@ export class MemoryMatchService {
 
   private cardAdapter(apiCard: any): MemoryCard{
     let id: string = this.throwErrorIfUndefinedOrNull(apiCard.id)
+    let name: string = this.returnValueOrNull(apiCard.name);
+    let contributor: string = this.contributorAdapter(apiCard.contributor);
+    let credits: object = this.returnValueOrNull(apiCard.credits);
+    let cardFrontURL: string = this.throwErrorIfUndefinedOrNull(this.mediaAdapter(apiCard.card_front).url);
+    let audioURL: string = this.throwErrorIfUndefinedOrNull(this.mediaAdapter(apiCard.audio).url);
     return{
     'id': id,
-    'name': this.returnValueOrNull(apiCard.name),
-    'contributor': this.contributorAdapter(apiCard.contributor),
-    'credits': this.returnValueOrNull(apiCard.credits),
-    'cardFrontURL': this.throwErrorIfUndefinedOrNull(this.mediaAdapter(apiCard.card_front).url)
+    'name': name,
+    'contributor': contributor,
+    'credits': credits,
+    'cardFrontURL': cardFrontURL,
+    'audioURL': audioURL
     }
   }
 
