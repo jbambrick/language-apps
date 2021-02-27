@@ -1,5 +1,5 @@
-<div *ngIf="alphabetSize && tileNumber">
-    <alphabet-tile [num]="tileNumber" (cardNotFound)="navigateToIndex($event)" (cardClicked)="handleCardClick($event)"></alphabet-tile>
-    <img src="https://api.tsilhqotinlanguage.ca/uploads/thumbnail_left_arrow_1964c98834.png" (click)="handleLeftArrowClick()">
-    <img src="https://api.tsilhqotinlanguage.ca/uploads/thumbnail_right_arrow_9dcea0d92b.png" (click)="handleRightArrowClick()">    
-</div>
+    <div *ngIf="alphabetSize && tileNumber">
+        <alphabet-tile [num]="tileNumber" (cardNotFound)="navigateToIndex($event)" (cardClicked)="handleCardClick($event)"></alphabet-tile>
+        <img src="https://www.tsilhqotin.ca/wp-content/uploads/2021/02/thumbnail_left_arrow_1964c98834-removebg-preview.png" (click)="handleLeftArrowClick()">
+        <img src="https://www.tsilhqotin.ca/wp-content/uploads/2021/02/thumbnail_right_arrow_9dcea0d92b-removebg-preview.png" (click)="handleRightArrowClick()">    
+    </div>

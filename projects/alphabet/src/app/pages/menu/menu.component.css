@@ -1,6 +1,6 @@
 #menu {
     width: 100vw; 
-    height: 100vw; /* 100/56.25 = 1.778 */
+    height: 100%; /* 100/56.25 = 1.778 */
     max-height: 100vh;
     max-width: 133.33vh; /* 16/9 = 1.778 */
     margin: auto; 
@@ -11,7 +11,7 @@
     margin: 1px;
 }
 .mat-grid-tile {
-    margin: 1px;
+    margin: 0px;
 }
 
 .container {
