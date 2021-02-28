@@ -63,6 +63,7 @@ export class MemoryMatchService {
   }
 
   private cardAdapter(apiCard: any): MemoryCard{
+    console.log(`Adapting item ${apiCard.name}`);
     let id: string = this.throwErrorIfUndefinedOrNull(apiCard.id)
     let name: string = this.returnValueOrNull(apiCard.name);
     let contributor: string = this.contributorAdapter(apiCard.contributor);

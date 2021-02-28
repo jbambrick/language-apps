@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { of, Observable } from 'rxjs';
 import { switchMap, delay } from 'rxjs/operators';
+
+import { AudioService } from 'audio';
 import { CardID } from '../../widgets/card/card-id';
 import { CardWithState } from '../../../types/classes/card-with-state';
 import { MemoryMatchService } from '../../../services/memory-match.service';
@@ -30,7 +32,7 @@ export class GameComponent implements OnInit {
 
 
 
-  constructor( private memoryMatchService: MemoryMatchService, private route: ActivatedRoute, private router: Router ) { }
+  constructor( private memoryMatchService: MemoryMatchService, private route: ActivatedRoute, private router: Router, private audio: AudioService ) { }
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
@@ -56,6 +58,7 @@ export class GameComponent implements OnInit {
       console.log(`Ignoring deactivated card`);
       return; 
     } 
+    this.playAudio(elementID);
     this.addCardSelection(ids);
   }
 
@@ -144,5 +147,11 @@ export class GameComponent implements OnInit {
 
   private activateCard(elementID: string){
     this.cardsWithState[elementID].active = true;
+  }
+
+  private playAudio(elementID: string){
+    let url: string = this.cardsWithState[elementID].card.audioURL;
+    if(!url) return;
+    this.audio.playAudioFromURL(url);
   }
 }

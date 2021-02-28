@@ -1,4 +1,3 @@
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 import { CardState } from '../../components/widgets/card/card-state';
 import { MemoryCard } from '../types/memory-card';
 export class CardWithState{

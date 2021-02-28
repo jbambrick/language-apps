@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { DropdownData } from '../../widgets/dropdown/dropdown-data';
 import { DropdownItem } from '../../widgets/dropdown/dropdown-item';
 
+import { AudioService } from 'audio';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -31,7 +33,7 @@ export class HomeComponent implements OnInit {
     ]
   }
 
-  constructor() { }
+  constructor( private audioService: AudioService ) { }
 
   ngOnInit(): void {
   }

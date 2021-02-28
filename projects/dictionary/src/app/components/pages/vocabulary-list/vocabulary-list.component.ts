@@ -8,6 +8,7 @@ import { ListVariable } from './list-variable';
 import { ListQuery } from '../../../services/dictionary-search/list-query';
 import { Parameter } from '../../../services/dictionary-search/parameter';
 import { TermWithValues } from '../../../services/dictionary-data/term-with-values';
+import { AudioService } from 'audio';
 
 @Component({
   selector: 'app-vocabulary-list',
@@ -23,8 +24,7 @@ export class VocabularyListComponent implements OnInit {
   dropboxes: ListVariable<string>[] = [];
   checkboxes: ListVariable<boolean>[] = [];
 
-
-  constructor( private dictionaryData: DictionaryDataService, private dictionarySearch: DictionarySearchService, private route: ActivatedRoute ) { }
+  constructor( private dictionaryData: DictionaryDataService, private dictionarySearch: DictionarySearchService, private route: ActivatedRoute, private audio: AudioService ) { }
 
   ngOnInit(): void {
   
@@ -93,7 +93,8 @@ export class VocabularyListComponent implements OnInit {
   }
 
   playAudio(){
-    console.log(`Now Playing ${this.selectedTerm.term.audioURL}`);
+    let url: string = this.selectedTerm.term.audioURL;
+    this.audio.playAudioFromURL(this.selectedTerm.term.audioURL);
   }
 
   private setDropboxes(dropboxes){

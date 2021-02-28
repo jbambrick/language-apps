@@ -12,7 +12,6 @@
 
 <div *ngIf="dropboxes">
     <div *ngFor="let dropbox of dropboxes">
-       <!-- <app-dropdown [dropdownData]="dropbox.data" (onItemSelection)="handleNewSelection($event)"></app-dropdown> -->
        <app-list-control [listVariable]="dropbox" (onChange)="handleNewSelection($event)"></app-list-control>
     </div>
 </div>

@@ -5,7 +5,7 @@ import { AlphabetService } from '../../services/alphabet.service';
 import { Card } from '../../services/IAlphabetAPI';
 import { CardRegion } from './card-region';
 import { TileClickEventData } from './tile-click-event-data';
-import { AudioService } from '../../services/audio.service';
+import { AudioService } from 'audio';
 
 @Component({
   selector: 'alphabet-tile',
