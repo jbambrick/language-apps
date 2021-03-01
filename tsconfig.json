@@ -12,6 +12,24 @@
     },
     {
       "path": "./projects/alphabet/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/memory-match/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/memory-match/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/dictionary/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/dictionary/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/audio/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/audio/tsconfig.spec.json"
     }
 ]
 }

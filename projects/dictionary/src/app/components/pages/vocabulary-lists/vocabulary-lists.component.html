@@ -1,0 +1,7 @@
+<div *ngIf="lists">
+    <div *ngFor="let list of lists">
+        <div [routerLink]="['/lists',list.id]">
+            {{ list | displayVocabularyListName }}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div *ngIf="rounds">
+    <div *ngFor="let round of rounds" [routerLink]="['/game',round.id]">
+        {{ round | roundDisplay }}
+        <div *ngIf="round.contributor">
+            contributed by: {{ round.contributor }}
+        </div>
+    </div>
+</div>

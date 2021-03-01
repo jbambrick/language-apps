@@ -1,0 +1,7 @@
+<div *ngIf="_data?.items">
+    <label for="options">{{ _data.prompt }} </label>
+    <select name="options" id="options" [(selectedIndex)]="selectedIndex" (change)="handleInput($event)">
+        <option *ngFor="let item of _data.items">{{ item.display }}</option>
+    </select> 
+</div>
+
