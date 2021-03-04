@@ -17,7 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 
-import { DisplayVocabularyListNamePipe } from './pipes/display-vocabulary-list-name.pipe';
+//import { DisplayVocabularyListNamePipe } from './pipes/display-vocabulary-list-name.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { DisplayVocabularyListNamePipe } from './pipes/display-vocabulary-list-n
     DetailComponent,
     HomeComponent,
     CreditsComponent,
-    DisplayVocabularyListNamePipe
+  //  DisplayVocabularyListNamePipe
   ],
   imports: [
     BrowserModule,
