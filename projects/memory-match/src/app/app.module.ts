@@ -9,6 +9,8 @@ import { MenuComponent } from './components/pages/menu/menu.component';
 import { GameComponent } from './components/pages/game/game.component';
 import { RoundDisplayPipe } from './pipes/round-display/round-display.pipe';
 import { CardComponent } from './components/widgets/card/card.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CardComponent } from './components/widgets/card/card.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

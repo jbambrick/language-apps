@@ -84,3 +84,38 @@ li {
 .mat-icon {
     padding: 2px;
 }
+
+
+
+
+  @media screen and (orientation:landscape)
+and (min-device-width: 0px) 
+and (max-device-width: 870px) {
+    .footer {
+        visibility: hidden;
+    }
+
+    button {
+        height: auto;
+        width: 90px;
+        font-size: smaller;
+    }
+
+    #buttons {
+        padding: 5px;
+    }
+
+    #logo {
+        height: 100px;
+    }
+
+    .mat-card-title {
+        padding-top: 10px;
+    }
+
+    @-moz-document url-prefix() {
+        body {
+            margin-top: -10px;
+        }
+      }
+}
