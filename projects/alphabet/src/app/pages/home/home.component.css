@@ -37,18 +37,29 @@ button {
 
 #center {
     display: block;
-    background: linear-gradient(217deg, rgb(255, 0, 0), rgba(255,0,0,0) 70.71%),
-    linear-gradient(127deg, rgba(185, 185, 185, 0.842), rgba(0,255,0,0) 70.71%),
-    linear-gradient(336deg, rgb(0, 0, 255), rgba(0,0,255,0) 70.71%);
+    background: linear-gradient(90deg, #f0028188, #979599) 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center;
     border-top-left-radius:10px;
     border-top-right-radius:0px;
     border-bottom-right-radius: 50% 20%;
     border-top-left-radius: 50% 20%;
     border-top-right-radius: -50% -20%;
     height: auto;
+}
+
+#image {
+    background: url(https://d3d0lqu00lnqvz.cloudfront.net/media/media/f7d480be-53a4-4ce7-9dd8-a08f40df9f31.jpg);
+    background-repeat: no-repeat;
+
+    background-size: 100vw;
+    border-top-left-radius:10px;
+    border-top-right-radius:0px;
+    border-bottom-right-radius: 50% 20%;
+    border-top-left-radius: 50% 20%;
+    border-top-right-radius: -50% -20%;
+    height: auto;
+    width: 100vw;
 }
 
 #buttons {

@@ -1,3 +1,27 @@
+.fluid-container {
+    background: linear-gradient(217deg, rgb(255, 0, 0), rgba(255,0,0,0)),
+    linear-gradient(127deg, rgba(185, 185, 185, 0.842), rgba(0,255,0,0)),
+    linear-gradient(336deg, rgb(0, 0, 255), rgba(0,0,255,0));
+    background-repeat: no-repeat;
+    border-top-right-radius:0px;
+    border-bottom-right-radius: 50% 20%;
+
+    border-top-right-radius: -50% -20%;
+    height: 100px;
+    text-align: center;
+    color: white;
+}
+
+section {
+    width: 100%;
+    min-height: 1000px;
+}
+
+.wave {
+    position: relative;
+    background: linear-gradient(90deg, #f0027f, #75489f);
+}
+
 .mat-card {
     margin: auto;
     margin-bottom: 2px;
