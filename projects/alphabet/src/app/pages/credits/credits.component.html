@@ -1,7 +1,26 @@
-<section class="wave"></section>
+<div id="background" >
+<section class="wave"></section> <!-- This creates gradient overlay-->
 <section class="wave"></section>
 
 <div class="container">
+    <div id="credits" *ngIf="contributors">
+        <div class="contributor" *ngFor="let c of contributors">
+            
+            <div id="heading">
+                <h2 matLine><b>{{ c.name }}</b></h2>
+            </div>
+            
+            <li *ngFor="let contribution of c.contributions">
+                {{ contribution }}
+            </li>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<!--
+    <div class="container">
     <div id="credits" *ngIf="contributors">
         <mat-card class="contributor" *ngFor="let c of contributors">
             <mat-card id="heading">
@@ -14,3 +33,4 @@
         </mat-card>
     </div>
 </div>
+-->
